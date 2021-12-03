@@ -12,7 +12,7 @@ public class PlasticGarbage extends Garbage {
                 return isClean;
         }
 
-        public void clean(boolean isClean) {
+        public void clean() {
                 if (!isClean) isClean = true;
         }
 }
