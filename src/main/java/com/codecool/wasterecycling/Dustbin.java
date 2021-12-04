@@ -26,14 +26,34 @@ public class Dustbin {
                 return size;
         }
 
-        public void throwOutGarbage(Garbage garbage) {
+        public void throwOutGarbage(Garbage garbage) throws DustbinContentException {
                 short CAPACITY_MODIFIER = 2;
-                if (size + 1 > getCapacity())
-                        this.garbageArray = Arrays.copyOf(garbageArray, garbageArray.length * CAPACITY_MODIFIER);
-                garbageArray[size++] = garbage;
+                boolean isAllowedGarbage = true;
+                if (garbage instanceof PlasticGarbage) {
+                        PlasticGarbage plastic = (PlasticGarbage) garbage;
+                        if (!plastic.isClean()) isAllowedGarbage = false;
+                }
+                if (garbage instanceof PaperGarbage) {
+                        PaperGarbage paper = (PaperGarbage) garbage;
+                        if (!paper.isSqueezed()) isAllowedGarbage = false;
+                }
+                if (isAllowedGarbage) {
+                        if (size + 1 > getCapacity())
+                                this.garbageArray = Arrays.copyOf(garbageArray, garbageArray.length * CAPACITY_MODIFIER);
+                        garbageArray[size++] = garbage;
+                } else {
+                        throw new DustbinContentException("Garbage type is not permitted");
+                }
         }
 
         public void emptyContents() {
                 this.garbageArray = new Garbage[10];
+        }
+
+        @Override
+        public String toString() {
+                final StringBuilder sb = new StringBuilder("Dustbin");
+                sb.append(Arrays.toString(garbageArray));
+                return sb.toString();
         }
 }
