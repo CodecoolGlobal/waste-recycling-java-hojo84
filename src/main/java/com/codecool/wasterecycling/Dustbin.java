@@ -48,6 +48,7 @@ public class Dustbin {
 
         public void emptyContents() {
                 this.garbageArray = new Garbage[10];
+                size = 0;
         }
 
         @Override
