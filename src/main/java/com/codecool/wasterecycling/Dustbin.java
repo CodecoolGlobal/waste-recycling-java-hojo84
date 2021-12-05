@@ -53,6 +53,7 @@ public class Dustbin {
 
         @Override
         public String toString() {
+                if (garbageArray[0] == null) return "Garbage is empty";
                 String[] houseWasteArr = new String[getHouseWasteCount()];
                 String[] paperArr = new String[getPaperCount()];
                 String[] plasticArr = new String[getPlasticCount()];
