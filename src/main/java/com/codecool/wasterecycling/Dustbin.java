@@ -56,4 +56,24 @@ public class Dustbin {
                 sb.append(Arrays.toString(garbageArray));
                 return sb.toString();
         }
+
+        public int getHouseWasteCount() {
+                return getSize() - (getPaperCount() + getPlasticCount());
+        }
+
+        public int getPaperCount() {
+                int counter = 0;
+                for (int i = 0; i < getSize(); i++) {
+                        if (garbageArray[i] instanceof PaperGarbage) counter++;
+                }
+                return counter;
+        }
+
+        public int getPlasticCount() {
+                int counter = 0;
+                for (int i = 0; i < getSize(); i++) {
+                        if (garbageArray[i] instanceof PlasticGarbage) counter++;
+                }
+                return counter;
+        }
 }
