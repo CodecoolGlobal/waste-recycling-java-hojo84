@@ -52,8 +52,32 @@ public class Dustbin {
 
         @Override
         public String toString() {
-                final StringBuilder sb = new StringBuilder("Dustbin");
-                sb.append(Arrays.toString(garbageArray));
+                String[] houseWasteArr = new String[getHouseWasteCount()];
+                String[] paperArr = new String[getPaperCount()];
+                String[] plasticArr = new String[getPlasticCount()];
+                int sizeHouseWasteArr = 0, sizePaperArr = 0, sizePlasticArr = 0;
+                for (int i = 0; i < getSize(); i++) {
+                        if (garbageArray[i] instanceof PaperGarbage) {
+                                paperArr[sizePaperArr++] = garbageArray[i].getName();
+                        } else if (garbageArray[i] instanceof PlasticGarbage) {
+                                plasticArr[sizePlasticArr++] = garbageArray[i].getName();
+                        } else {
+                                houseWasteArr[sizeHouseWasteArr++]=garbageArray[i].getName();
+                        }
+                }
+                final StringBuilder sb = new StringBuilder(getColor() + " Dustbin! ");
+                sb.append("House waste content: "+ getHouseWasteCount() +" item(s) ");
+                for (int i = 0; i < houseWasteArr.length; i++) {
+                        sb.append(houseWasteArr[i]).append(" nr.").append(i+1).append(" ");
+                }
+                sb.append("Paper content: "+ getPaperCount() +" item(s) ");
+                for (int i = 0; i < paperArr.length; i++) {
+                        sb.append(paperArr[i]).append(" nr.").append(i+1).append(" ");
+                }
+                sb.append("Plastic content: "+ getPlasticCount() +" item(s) ");
+                for (int i = 0; i < plasticArr.length; i++) {
+                        sb.append(plasticArr[i]).append(" nr.").append(i+1).append(" ");
+                }
                 return sb.toString();
         }
 
