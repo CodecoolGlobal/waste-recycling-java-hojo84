@@ -62,23 +62,27 @@ public class Dustbin {
                         } else if (garbageArray[i] instanceof PlasticGarbage) {
                                 plasticArr[sizePlasticArr++] = garbageArray[i].getName();
                         } else {
-                                houseWasteArr[sizeHouseWasteArr++]=garbageArray[i].getName();
+                                houseWasteArr[sizeHouseWasteArr++] = garbageArray[i].getName();
                         }
                 }
                 final StringBuilder sb = new StringBuilder(getColor() + " Dustbin! ");
-                sb.append("House waste content: "+ getHouseWasteCount() +" item(s) ");
+                sb.append("House waste content: " + getHouseWasteCount() + " item(s) ");
                 for (int i = 0; i < houseWasteArr.length; i++) {
-                        sb.append(houseWasteArr[i]).append(" nr.").append(i+1).append(" ");
+                        sb.append(houseWasteArr[i]).append(" nr.").append(i + 1).append(" ");
                 }
-                sb.append("Paper content: "+ getPaperCount() +" item(s) ");
+                sb.append("Paper content: " + getPaperCount() + " item(s) ");
                 for (int i = 0; i < paperArr.length; i++) {
-                        sb.append(paperArr[i]).append(" nr.").append(i+1).append(" ");
+                        sb.append(paperArr[i]).append(" nr.").append(i + 1).append(" ");
                 }
-                sb.append("Plastic content: "+ getPlasticCount() +" item(s) ");
+                sb.append("Plastic content: " + getPlasticCount() + " item(s) ");
                 for (int i = 0; i < plasticArr.length; i++) {
-                        sb.append(plasticArr[i]).append(" nr.").append(i+1).append(" ");
+                        sb.append(plasticArr[i]).append(" nr.").append(i + 1).append(" ");
                 }
                 return sb.toString();
+        }
+
+        public void displayContents() {
+                System.out.println(this);
         }
 
         public int getHouseWasteCount() {
