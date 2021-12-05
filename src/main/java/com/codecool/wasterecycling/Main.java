@@ -15,6 +15,8 @@ public class Main {
                 Garbage garbage6 = new PlasticGarbage("baby food container", false);
                 Garbage garbage7 = new Garbage("Rotten tomato");
 
+                ((PlasticGarbage) garbage5).clean();
+
                 try {
                         dustbin.throwOutGarbage(garbage1);
                 } catch (DustbinContentException e) {
@@ -58,6 +60,6 @@ public class Main {
                 System.out.println("Number of house waste garbage: " + dustbin.getHouseWasteCount());
 
                 dustbin.emptyContents();
-                System.out.println(dustbin);
+                dustbin.displayContents();
         }
 }
