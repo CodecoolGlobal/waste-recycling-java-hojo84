@@ -10,4 +10,12 @@ public class Garbage {
         public String getName() {
                 return name;
         }
+
+        @Override
+        public String toString() {
+                final StringBuilder sb = new StringBuilder("Garbage{");
+                sb.append("name='").append(name).append('\'');
+                sb.append('}');
+                return sb.toString();
+        }
 }
